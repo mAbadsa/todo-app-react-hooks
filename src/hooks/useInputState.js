@@ -5,9 +5,6 @@ function useInputState (initialValue = "") {
     function inputState(e) {
         setState(e.target.value);
     }
-    // function handleChange (e) {
-    //     setState(e.target.value);
-    // }
 
     function reset () {
         setState('');

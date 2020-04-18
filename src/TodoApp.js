@@ -5,7 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
-import TodoList from './TodoList';
+import TodoList from "./TodoList";
+import TodoForm from "./TodoForm";
 
 function TodoApp() {
   const initialTodos = [
@@ -14,6 +15,9 @@ function TodoApp() {
     { id: 3, task: "Task 3", completed: true },
   ];
   const [todos, setTodo] = useState(initialTodos);
+  const addTodo = (newTodo) => {
+    setTodo([...todos, { id: 4, task: newTodo, completed: false }]);
+  };
   return (
     <Paper
       style={{
@@ -31,7 +35,8 @@ function TodoApp() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <TodoList todos={todos}/>
+      <TodoForm addTodo={addTodo}/>
+      <TodoList todos={todos} />
     </Paper>
   );
 }
