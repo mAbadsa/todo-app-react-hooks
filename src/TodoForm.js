@@ -27,7 +27,7 @@ function TodoForm({ addTodo }) {
           justify="center"
           alignItems="center"
         >
-          <Grid item lg={10}>
+          <Grid item xs={9}>
             <TextField
               value={value}
               onChange={setValue}
@@ -36,7 +36,7 @@ function TodoForm({ addTodo }) {
               fullWidth
             />
           </Grid>
-          <Grid item lg={2}>
+          <Grid item xs={2}>
             <IconButton
               type="submit"
               color="primary"
