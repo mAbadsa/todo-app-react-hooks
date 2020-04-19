@@ -2,12 +2,12 @@ import React from "react";
 
 import Paper from "@material-ui/core/Paper";
 import { green } from "@material-ui/core/colors";
-import IconButton from "@material-ui/core/IconButton";
+import FormControl  from "@material-ui/core/FormControl";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
-import useInputState from "./hooks/useInputState";
 import Grid from "@material-ui/core/Grid";
+import useInputState from "./hooks/useInputState";
 
 function TodoForm({ addTodo }) {
   const [value, setValue, reset] = useInputState("");
@@ -27,30 +27,21 @@ function TodoForm({ addTodo }) {
           justify="center"
           alignItems="center"
         >
-          <Grid item xs={9}>
+          <Grid item xs={10}>
             <TextField
               value={value}
               onChange={setValue}
-            //   margin="normal"
+              margin="normal"
               label="Add New Todo"
               fullWidth
             />
           </Grid>
           <Grid item xs={2}>
-            <IconButton
-              type="submit"
-              color="primary"
-              aria-label="add to todo list"
-            >
-              <Fab style={{ backgroundColor: green[500] }}>
-                <AddIcon fontSize="large" variant="outline" style={{ color: "#fff" }}/>
+              <Fab type="submit" style={{ backgroundColor: green[500] }} size="medium" aria-label="add to todo list">
+                <AddIcon fontSize="large" style={{ color: "#fff" }}/>
               </Fab>
-            </IconButton>
           </Grid>
         </Grid>
-        {/* <Button type="submit" variant="outlined" color="primary">
-          Add Todo
-        </Button> */}
       </form>
     </Paper>
   );
