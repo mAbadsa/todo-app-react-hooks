@@ -12,7 +12,7 @@ function EditTodoForm(props) {
   return (
     <>
       <form
-        style={{ width: "100%" }}
+        style={{ width: "100%", marginLeft: "1rem" }}
         onSubmit={(e) => {
           e.preventDefault();
           props.handleEdit(props.id, todo);

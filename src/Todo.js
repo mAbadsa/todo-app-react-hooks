@@ -11,6 +11,7 @@ import EditTodoForm from './EditTodoForm';
 
 function Todo({ task, completed, id, handleRemove, handleToggle, editTodo }) {
   const [isEditing, toggle] = useToggle(false);
+
   return (
     <ListItem>
       {isEditing ? (
