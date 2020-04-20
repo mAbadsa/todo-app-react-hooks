@@ -7,12 +7,16 @@ import Divider from "@material-ui/core/Divider";
 import Todo from "./Todo";
 
 function TodoList({todos, removeTodo, toggleTodo, editTodo}) {
-
+  const listItemStyle = {
+    color: "#a5a5a5",
+    fontStyle: "italic",
+    paddingLeft: "1rem",
+  }
   return todos.length === 0 ? (
     <Paper elevation={3}>
       <List>
         <ListItem>
-          <ListItemText>Enter your tasks...</ListItemText>
+          <ListItemText style={listItemStyle}>Add your tasks...</ListItemText>
         </ListItem>
       </List>
     </Paper>
@@ -26,10 +30,11 @@ function TodoList({todos, removeTodo, toggleTodo, editTodo}) {
           return (
             <div key={todo.id}>
               <Todo
-                id={todo.id}
-                task={todo.task}
+                // id={todo.id}
+                // task={todo.task}
                 // key={todo.id}
-                completed={todo.completed}
+                // completed={todo.completed}
+                {...todo}
                 handleRemove={removeTodo}
                 handleToggle={toggleTodo}
                 editTodo={editTodo}

@@ -1,49 +1,28 @@
-import React, { useState } from "react";
-
+import React, { useEffect } from "react";
+import useTodoState from "./hooks/useTodoState";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import { v4 as uuidv4 } from "uuid";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 
 function TodoApp() {
-  const initialTodos = [
-    { id: 1, task: "Task 1", completed: true},
-    { id: 2, task: "Task 2", completed: false},
-    { id: 3, task: "Task 3", completed: true},
-  ];
-  const [todos, setTodo] = useState(initialTodos);
-  const addTodo = (newTodo) => {
-    if (newTodo === "") {
-      return;
-    }
-    setTodo([...todos, { id: uuidv4(), task: newTodo, completed: false }]);
-  }
-  const removeTodo = (todoId) => {
-    // Filter todo by id
-    const updateTodo = todos.filter((todo) => todo.id !== todoId);
-    // Call setTodo with new todo
-    setTodo(updateTodo);
-  };
-
-  const toggleTodo = (todoId) => {
-    const updateTodo = todos.map((todo) => {
-      return todo.id === todoId
-        ? { ...todo, completed: !todo.completed }
-        : todo;
-    });
-    setTodo(updateTodo);
-  };
-
-  const editTodo = (todoId, newTask) => {
-    const updateTodo = todos.map((todo) => {
-      return todo.id === todoId ? { ...todo, task: newTask } : todo;
-    });
-    setTodo(updateTodo);
-  };
+  const initialTodos = JSON.parse(
+    window.localStorage.getItem("todos-react") || "[]"
+  );
+  //  [
+  //   { id: 1, task: "Task 1", completed: true},
+  //   { id: 2, task: "Task 2", completed: false},
+  //   { id: 3, task: "Task 3", completed: true},
+  // ];
+  const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(
+    initialTodos
+  );
+  useEffect(() => {
+    window.localStorage.setItem("todos-react", JSON.stringify(todos));
+  });
 
   return (
     <Paper

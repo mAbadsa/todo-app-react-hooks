@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FormGroup from "@material-ui/core/FormGroup";
 import { green, red } from "@material-ui/core/colors";
 import IconButton from "@material-ui/core/IconButton";
 import Clear from "@material-ui/icons/Clear";
